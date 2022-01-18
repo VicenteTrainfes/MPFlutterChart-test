@@ -15,7 +15,10 @@ dependencies:
   path_drawing: ^1.0.0
   image_gallery_saver: ^1.7.1
   optimized_gesture_detector: 
-    path : ../OptimizedGestureDetector/
+    git:
+      url: git://github.com/Juniorlpes/OptimizedGestureDetector.git
+      #path: mp_chart
+    #path : ../OptimizedGestureDetector/
   vector_math: ^2.1.0
   flutter:
     sdk: flutter
