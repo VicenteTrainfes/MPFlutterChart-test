@@ -13,10 +13,10 @@ class TriangleShapeRenderer implements IShapeRenderer {
   void renderShape(
       Canvas c,
       IScatterDataSet dataSet,
-      ViewPortHandler viewPortHandler,
-      double posX,
-      double posY,
-      Paint renderPaint) {
+      ViewPortHandler? viewPortHandler,
+      double? posX,
+      double? posY,
+      Paint? renderPaint) {
     final double shapeSize = dataSet.getScatterShapeSize();
     final double shapeHalf = shapeSize / 2;
     final double shapeHoleSizeHalf =
@@ -26,13 +26,13 @@ class TriangleShapeRenderer implements IShapeRenderer {
 
     final Color shapeHoleColor = dataSet.getScatterShapeHoleColor();
 
-    renderPaint.style = PaintingStyle.fill;
+    renderPaint!.style = PaintingStyle.fill;
 
     // create a triangle path
     Path tri = _trianglePathBuffer;
     tri.reset();
 
-    tri.moveTo(posX, posY - shapeHalf);
+    tri.moveTo(posX!, posY! - shapeHalf);
     tri.lineTo(posX + shapeHalf, posY + shapeHalf);
     tri.lineTo(posX - shapeHalf, posY + shapeHalf);
 

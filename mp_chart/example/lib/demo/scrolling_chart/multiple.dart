@@ -38,7 +38,7 @@ class ScrollingChartMultiple extends StatefulWidget {
 
 class ScrollingChartMultipleState
     extends SimpleActionState<ScrollingChartMultiple> {
-  List<Controller> _controllers = List();
+  List<Controller> _controllers = [];
   var random = Random(1);
   bool _isParentMove = true;
   double _curX = 0.0;
@@ -210,25 +210,25 @@ class ScrollingChartMultipleState
   }
 
   LineData _generateDataLine(int cnt) {
-    List<Entry> values1 = List();
+    List<Entry> values1 = [];
 
     for (int i = 0; i < 12; i++) {
       values1.add(Entry(x: i.toDouble(), y: (random.nextDouble() * 65) + 40));
     }
 
-    LineDataSet d1 = LineDataSet(values1, "New DataSet $cnt, (1)");
+    LineDataSet d1 = LineDataSet(values1, "DataSet $cnt, (1)");
     d1.setLineWidth(2.5);
     d1.setCircleRadius(4.5);
     d1.setHighLightColor(Color.fromARGB(255, 244, 117, 117));
     d1.setDrawValues(false);
 
-    List<Entry> values2 = List();
+    List<Entry> values2 = [];
 
     for (int i = 0; i < 12; i++) {
       values2.add(Entry(x: i.toDouble(), y: values1[i].y - 30));
     }
 
-    LineDataSet d2 = LineDataSet(values2, "New DataSet $cnt, (2)");
+    LineDataSet d2 = LineDataSet(values2, "DataSet $cnt, (2)");
     d2.setLineWidth(2.5);
     d2.setCircleRadius(4.5);
     d2.setHighLightColor(Color.fromARGB(255, 244, 117, 117));
@@ -236,7 +236,7 @@ class ScrollingChartMultipleState
     d2.setCircleColor(ColorUtils.VORDIPLOM_COLORS[0]);
     d2.setDrawValues(false);
 
-    List<ILineDataSet> sets = List();
+    List<ILineDataSet> sets = [];
     sets.add(d1);
     sets.add(d2);
 
@@ -244,24 +244,24 @@ class ScrollingChartMultipleState
   }
 
   BarData _generateDataBar(int cnt) {
-    List<BarEntry> entries = List();
+    List<BarEntry> entries = [];
 
     for (int i = 0; i < 12; i++) {
       entries
           .add(BarEntry(x: i.toDouble(), y: (random.nextDouble() * 70) + 30));
     }
 
-    BarDataSet d = BarDataSet(entries, "New DataSet $cnt");
+    BarDataSet d = BarDataSet(entries, "DataSet $cnt");
     d.setColors1(ColorUtils.VORDIPLOM_COLORS);
     d.setHighLightAlpha(255);
 
-    BarData cd = BarData(List()..add(d));
+    BarData cd = BarData([]..add(d));
     cd.barWidth = (0.9);
     return cd;
   }
 
   PieData _generateDataPie() {
-    List<PieEntry> entries = List();
+    List<PieEntry> entries = [];
 
     for (int i = 0; i < 4; i++) {
       entries.add(PieEntry(
@@ -306,13 +306,13 @@ class ScrollingChartMultipleState
   }
 
   String generateCenterText() {
-//    SpannableString s = new SpannableString("MPAndroidChart\ncreated by\nPhilipp Jahoda");
-//    s.setSpan(new RelativeSizeSpan(1.6f), 0, 14, 0);
-//    s.setSpan(new ForegroundColorSpan(ColorTemplate.VORDIPLOM_COLORS[0]), 0, 14, 0);
-//    s.setSpan(new RelativeSizeSpan(.9f), 14, 25, 0);
-//    s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, 25, 0);
-//    s.setSpan(new RelativeSizeSpan(1.4f), 25, s.length(), 0);
-//    s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), 25, s.length(), 0);
+//    SpannableString s = SpannableString("MPAndroidChart\ncreated by\nPhilipp Jahoda");
+//    s.setSpan(RelativeSizeSpan(1.6f), 0, 14, 0);
+//    s.setSpan(ForegroundColorSpan(ColorTemplate.VORDIPLOM_COLORS[0]), 0, 14, 0);
+//    s.setSpan(RelativeSizeSpan(.9f), 14, 25, 0);
+//    s.setSpan(ForegroundColorSpan(Color.GRAY), 14, 25, 0);
+//    s.setSpan(RelativeSizeSpan(1.4f), 25, s.length(), 0);
+//    s.setSpan(ForegroundColorSpan(ColorTemplate.getHoloBlue()), 25, s.length(), 0);
 //    return s;
     return "mutiple";
   }

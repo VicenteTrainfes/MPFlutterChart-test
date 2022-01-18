@@ -201,25 +201,25 @@ class LineChartDualAxisState extends LineActionState<LineChartDualAxis>
     imgs[0] = await ImageLoader.loadImage('assets/img/star.png');
     imgs[1] = await ImageLoader.loadImage('assets/img/add.png');
     imgs[2] = await ImageLoader.loadImage('assets/img/close.png');
-    List<Entry> values1 = List();
+    List<Entry> values1 = [];
 
     for (int i = 0; i < count; i++) {
       double val = (random.nextDouble() * (range / 2.0)) + 50;
       values1.add(Entry(x: i.toDouble(), y: val, icon: imgs[0]));
     }
 
-    List<Entry> values2 = List();
+    List<Entry> values2 = [];
 
     for (int i = 0; i < count; i++) {
       double val = (random.nextDouble() * range) + 450;
-      values2.add(new Entry(x: i.toDouble(), y: val, icon: imgs[1]));
+      values2.add(Entry(x: i.toDouble(), y: val, icon: imgs[1]));
     }
 
-    List<Entry> values3 = List();
+    List<Entry> values3 = [];
 
     for (int i = 0; i < count; i++) {
       double val = (random.nextDouble() * range) + 500;
-      values3.add(new Entry(x: i.toDouble(), y: val, icon: imgs[2]));
+      values3.add(Entry(x: i.toDouble(), y: val, icon: imgs[2]));
     }
 
     LineDataSet set1, set2, set3;
@@ -236,7 +236,7 @@ class LineChartDualAxisState extends LineActionState<LineChartDualAxis>
     set1.setFillColor(ColorUtils.HOLO_BLUE);
     set1.setHighLightColor(Color.fromARGB(255, 244, 117, 117));
     set1.setDrawCircleHole(false);
-    //set1.setFillFormatter(new MyFillFormatter(0f));
+    //set1.setFillFormatter(MyFillFormatter(0f));
     //set1.setDrawHorizontalHighlightIndicator(false);
     //set1.setVisible(false);
     //set1.setCircleHoleColor(Color.WHITE);
@@ -252,9 +252,9 @@ class LineChartDualAxisState extends LineActionState<LineChartDualAxis>
     set2.setFillColor(ColorUtils.RED);
     set2.setDrawCircleHole(false);
     set2.setHighLightColor(Color.fromARGB(255, 244, 117, 117));
-    //set2.setFillFormatter(new MyFillFormatter(900f));
+    //set2.setFillFormatter(MyFillFormatter(900f));
 
-    set3 = new LineDataSet(values3, "DataSet 3");
+    set3 = LineDataSet(values3, "DataSet 3");
     set3.setAxisDependency(AxisDependency.RIGHT);
     set3.setColor1(ColorUtils.YELLOW);
     set3.setCircleColor(ColorUtils.WHITE);
@@ -267,8 +267,10 @@ class LineChartDualAxisState extends LineActionState<LineChartDualAxis>
     set3.setHighLightColor(Color.fromARGB(255, 244, 117, 117));
 
     // create a data object with the data sets
-    controller.data =
-        LineData.fromList(List()..add(set1)..add(set2)..add(set3));
+    controller.data = LineData.fromList([]
+      ..add(set1)
+      ..add(set2)
+      ..add(set3));
     controller.data
       ..setValueTextColor(ColorUtils.WHITE)
       ..setValueTextSize(9);

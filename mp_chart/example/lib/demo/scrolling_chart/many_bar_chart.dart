@@ -22,7 +22,7 @@ class ScrollingChartManyBar extends StatefulWidget {
 
 class ScrollingChartManyBarState
     extends SimpleActionState<ScrollingChartManyBar> {
-  List<BarChartController> _controllers = List();
+  List<BarChartController> _controllers = [];
   var random = Random(1);
   bool _isParentMove = true;
   double _curX = 0.0;
@@ -132,18 +132,18 @@ class ScrollingChartManyBarState
   }
 
   BarData generateData(int cnt) {
-    List<BarEntry> entries = List();
+    List<BarEntry> entries = [];
 
     for (int i = 0; i < 12; i++) {
       entries
           .add(BarEntry(x: i.toDouble(), y: (random.nextDouble() * 70) + 30));
     }
 
-    BarDataSet d = BarDataSet(entries, "New DataSet $cnt");
+    BarDataSet d = BarDataSet(entries, "DataSet $cnt");
     d.setColors1(ColorUtils.VORDIPLOM_COLORS);
     d.setBarShadowColor(Color.fromARGB(255, 203, 203, 203));
 
-    List<IBarDataSet> sets = List();
+    List<IBarDataSet> sets = [];
     sets.add(d);
 
     BarData cd = BarData(sets);

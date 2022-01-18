@@ -170,24 +170,24 @@ class LineChartFilledState extends SimpleActionState<LineChartFilled> {
   }
 
   void _initLineData(int count, double range) {
-    List<Entry> values1 = new List();
+    List<Entry> values1 = [];
 
     for (int i = 0; i < count; i++) {
       double val = (random.nextDouble() * range) + 50;
-      values1.add(new Entry(x: i.toDouble(), y: val));
+      values1.add(Entry(x: i.toDouble(), y: val));
     }
 
-    List<Entry> values2 = new List();
+    List<Entry> values2 = [];
 
     for (int i = 0; i < count; i++) {
       double val = (random.nextDouble() * range) + 450;
-      values2.add(new Entry(x: i.toDouble(), y: val));
+      values2.add(Entry(x: i.toDouble(), y: val));
     }
 
     LineDataSet set1, set2;
 
     // create a dataset and give it a type
-    set1 = new LineDataSet(values1, "DataSet 1");
+    set1 = LineDataSet(values1, "DataSet 1");
 
     set1.setAxisDependency(AxisDependency.LEFT);
     set1.setColor1(Color.fromARGB(255, 255, 241, 46));
@@ -202,7 +202,7 @@ class LineChartFilledState extends SimpleActionState<LineChartFilled> {
     set1.setFillFormatter(A());
 
     // create a dataset and give it a type
-    set2 = new LineDataSet(values2, "DataSet 2");
+    set2 = LineDataSet(values2, "DataSet 2");
     set2.setAxisDependency(AxisDependency.LEFT);
     set2.setColor1(Color.fromARGB(255, 255, 241, 46));
     set2.setDrawCircles(false);
@@ -216,7 +216,9 @@ class LineChartFilledState extends SimpleActionState<LineChartFilled> {
     set2.setFillFormatter(B());
 
     // create a data object with the data sets
-    _controller.data = LineData.fromList(List()..add(set1)..add(set2));
+    _controller.data = LineData.fromList([]
+      ..add(set1)
+      ..add(set2));
     _controller.data.setDrawValues(false);
 
     setState(() {});

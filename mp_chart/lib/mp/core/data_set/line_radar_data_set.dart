@@ -21,7 +21,7 @@ abstract class LineRadarDataSet<T extends Entry>
   int _fillAlpha = 85;
 
   /// the width of the drawn data lines
-  double _lineWidth = 2.5;
+  double? _lineWidth = 2.5;
 
   /// if true, the data will also be drawn filled
   bool _drawFilled = false;
@@ -39,7 +39,8 @@ abstract class LineRadarDataSet<T extends Entry>
   /// Resets an eventually set "fillDrawable".
   ///
   /// @param color
-  void setFillColor(Color color) {
+  void setFillColor(Color? color) {
+    // TODO : should be optional?
     if(color != null) {
       _fillColor = color;
 //    mFillDrawable = null;
@@ -47,7 +48,8 @@ abstract class LineRadarDataSet<T extends Entry>
     }
   }
 
-  void setGradientColor(Color start, Color end) {
+  void setGradientColor(Color? start, Color? end) {
+    // TODO : should be optional?
     if(start != null && end != null) {
       super.setGradientColor(start, end);
       setGradientFilled(true);
@@ -90,7 +92,7 @@ abstract class LineRadarDataSet<T extends Entry>
   }
 
   @override
-  double getLineWidth() {
+  double? getLineWidth() {
     return _lineWidth;
   }
 

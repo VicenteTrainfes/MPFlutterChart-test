@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/widgets.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:mp_chart/mp/controller/controller.dart';
 import 'package:optimized_gesture_detector/details.dart';
 import 'package:optimized_gesture_detector/optimized_gesture_detector.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 
 abstract class Chart<C extends Controller> extends StatefulWidget {
@@ -13,7 +10,7 @@ abstract class Chart<C extends Controller> extends StatefulWidget {
 
   @override
   State createState() {
-    return controller.createChartState();
+    return controller.createChartState()!;
   }
 
   const Chart(this.controller);
@@ -34,22 +31,9 @@ abstract class ChartState<T extends Chart> extends State<T> {
   void capture() async {
     if (isCapturing) return;
     isCapturing = true;
-    String directory = "";
-    if (Platform.isAndroid) {
-      directory = (await getExternalStorageDirectory()).path;
-    } else if (Platform.isIOS) {
-      directory = (await getApplicationDocumentsDirectory()).path;
-    } else {
-      return;
-    }
 
-    String fileName = DateTime.now().toIso8601String();
-    String path = '$directory/$fileName.png';
     _screenshotController.capture(pixelRatio: 3.0).then((imgFile) {
-      ImageGallerySaver.saveImage(imgFile);
-      // .then((value) {
-      //   imgFile.delete();
-      // });
+      ImageGallerySaver.saveImage(imgFile!);
       isCapturing = false;
     }).catchError((error) {
       isCapturing = false;

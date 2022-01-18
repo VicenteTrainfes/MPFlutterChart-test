@@ -159,7 +159,7 @@ class LineChartInvertAxisState extends LineActionState<LineChartInvertAxis>
 
   void _initLineData(int count, double range) async {
     var img = await ImageLoader.loadImage('assets/img/star.png');
-    List<Entry> entries = List();
+    List<Entry> entries = [];
 
     for (int i = 0; i < count; i++) {
       double xVal = (random.nextDouble() * range);
@@ -182,12 +182,12 @@ class LineChartInvertAxisState extends LineActionState<LineChartInvertAxis>
     });
 
     // create a dataset and give it a type
-    LineDataSet set1 = new LineDataSet(entries, "DataSet 1");
+    LineDataSet set1 = LineDataSet(entries, "DataSet 1");
     set1.setLineWidth(1.5);
     set1.setCircleRadius(4);
 
     // create a data object with the data sets
-    controller.data = LineData.fromList(List()..add(set1));
+    controller.data = LineData.fromList([]..add(set1));
 
     setState(() {});
   }

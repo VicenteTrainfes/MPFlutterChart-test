@@ -29,7 +29,7 @@ class FSize extends Poolable {
   }
 
   static FSize getInstance(final double width, final double height) {
-    FSize result = pool.get();
+    FSize result = pool.get() as FSize;
     result._width = width;
     result._height = height;
     return result;
@@ -46,9 +46,6 @@ class FSize extends Poolable {
   FSize(this._width, this._height);
 
   bool equals(final Object obj) {
-    if (obj == null) {
-      return false;
-    }
     if (this == obj) {
       return true;
     }

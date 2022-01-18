@@ -31,7 +31,7 @@ class LineChartMultipleState extends LineActionState<LineChartMultiple>
   int _count = 20;
   double _range = 100.0;
 
-  List<Color> colors = List()
+  List<Color> colors = []
     ..add(ColorUtils.VORDIPLOM_COLORS[0])
     ..add(ColorUtils.VORDIPLOM_COLORS[1])
     ..add(ColorUtils.VORDIPLOM_COLORS[2]);
@@ -202,17 +202,17 @@ class LineChartMultipleState extends LineActionState<LineChartMultiple>
     imgs[0] = await ImageLoader.loadImage('assets/img/star.png');
     imgs[1] = await ImageLoader.loadImage('assets/img/add.png');
     imgs[2] = await ImageLoader.loadImage('assets/img/close.png');
-    List<ILineDataSet> dataSets = List();
+    List<ILineDataSet> dataSets = [];
 
     for (int z = 0; z < 3; z++) {
-      List<Entry> values = List();
+      List<Entry> values = [];
 
       for (int i = 0; i < count; i++) {
         double val = (random.nextDouble() * range) + 3;
-        values.add(new Entry(x: i.toDouble(), y: val, icon: imgs[z]));
+        values.add(Entry(x: i.toDouble(), y: val, icon: imgs[z]));
       }
 
-      LineDataSet d = new LineDataSet(values, "DataSet ${z + 1}");
+      LineDataSet d = LineDataSet(values, "DataSet ${z + 1}");
       d.setLineWidth(2.5);
       d.setCircleRadius(4);
       d.setCircleHoleRadius(3);

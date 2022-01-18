@@ -49,7 +49,7 @@ class PieChartHalfPieState extends SimpleActionState<PieChartHalfPie> {
   }
 
   // ignore: non_constant_identifier_names
-  final List<String> PARTIES = List()
+  final List<String> PARTIES = []
     ..add("Party A")
     ..add("Party B")
     ..add("Party C")
@@ -124,10 +124,10 @@ class PieChartHalfPieState extends SimpleActionState<PieChartHalfPie> {
     var count = 4;
     var range = 100;
 
-    List<PieEntry> values = List();
+    List<PieEntry> values = [];
 
     for (int i = 0; i < count; i++) {
-      values.add(new PieEntry(
+      values.add(PieEntry(
           icon: img,
           value: ((random.nextDouble() * range) + range / 5),
           label: PARTIES[i % PARTIES.length]));
@@ -141,7 +141,7 @@ class PieChartHalfPieState extends SimpleActionState<PieChartHalfPie> {
     //dataSet.setSelectionShift(0f);
 
     _controller.data = PieData(dataSet)
-      ..setValueFormatter(new PercentFormatter())
+      ..setValueFormatter(PercentFormatter())
       ..setValueTextColor(ColorUtils.WHITE)
       ..setValueTypeface(Util.LIGHT);
 

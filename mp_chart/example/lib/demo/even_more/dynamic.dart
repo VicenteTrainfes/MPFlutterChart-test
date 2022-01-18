@@ -198,10 +198,10 @@ class EvenMoreDynamicState extends ActionState<EvenMoreDynamic>
       int amount = data.getDataSetByIndex(0).getEntryCount();
       List<Entry> values = <Entry>[];
       for (int i = 0; i < amount; i++) {
-        values.add(new Entry(
-            x: i.toDouble(), y: (random.nextDouble() * 50) + 50 * count));
+        values.add(
+            Entry(x: i.toDouble(), y: (random.nextDouble() * 50) + 50 * count));
       }
-      LineDataSet set = new LineDataSet(values, "DataSet $count");
+      LineDataSet set = LineDataSet(values, "DataSet $count");
       set.setLineWidth(2.5);
       set.setCircleRadius(4.5);
       Color color = colors[count % colors.length];
