@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:mp_chart/mp/core/adapter_android_mp.dart';
@@ -52,8 +51,8 @@ class PieChartRenderer extends DataRenderer {
 
 //   Canvas mBitmapCanvas;
 
-  PieChartRenderer(
-      PieChartPainter chart, Animator? animator, ViewPortHandler? viewPortHandler,
+  PieChartRenderer(PieChartPainter chart, Animator? animator,
+      ViewPortHandler? viewPortHandler,
       {TypeFace? centerTextTypeface, TypeFace? entryLabelTypeface})
       : super(animator, viewPortHandler) {
     _painter = chart;
@@ -186,10 +185,11 @@ class PieChartRenderer extends DataRenderer {
     if (!dataSet.isAutomaticallyDisableSliceSpacingEnabled())
       return dataSet.getSliceSpace();
 
-    double spaceSizeRatio =
-        dataSet.getSliceSpace()! / viewPortHandler!.getSmallestContentExtension();
-    double minValueRatio =
-        dataSet.getYMin()! / (_painter!.getData() as PieData).getYValueSum() * 2;
+    double spaceSizeRatio = dataSet.getSliceSpace()! /
+        viewPortHandler!.getSmallestContentExtension();
+    double minValueRatio = dataSet.getYMin()! /
+        (_painter!.getData() as PieData).getYValueSum() *
+        2;
 
     double? sliceSpace =
         spaceSizeRatio > minValueRatio ? 0 : dataSet.getSliceSpace();
@@ -579,8 +579,10 @@ class PieChartRenderer extends DataRenderer {
               _valueLinePaint?..color = dataSet.getColor2(j);
             }
 
-            c.drawLine(Offset(pt0x, pt0y), Offset(pt1x, pt1y), _valueLinePaint!);
-            c.drawLine(Offset(pt1x, pt1y), Offset(pt2x, pt2y), _valueLinePaint!);
+            c.drawLine(
+                Offset(pt0x, pt0y), Offset(pt1x, pt1y), _valueLinePaint!);
+            c.drawLine(
+                Offset(pt1x, pt1y), Offset(pt2x, pt2y), _valueLinePaint!);
           }
 
           // draw everything, depending on settings
@@ -694,8 +696,8 @@ class PieChartRenderer extends DataRenderer {
     valuePaint = PainterUtils.create(valuePaint, valueText, color, textSize,
         fontFamily: typeFace?.fontFamily, fontWeight: typeFace?.fontWeight);
     valuePaint!.layout();
-    valuePaint!.paint(
-        c, Offset(x - valuePaint!.width / 2, y - valuePaint!.height));
+    valuePaint!
+        .paint(c, Offset(x - valuePaint!.width / 2, y - valuePaint!.height));
   }
 
   /// Draws an entry label at the specified position.
@@ -712,8 +714,10 @@ class PieChartRenderer extends DataRenderer {
         labelColor ?? ColorUtils.WHITE,
         labelTextSize ?? Utils.convertDpToPixel(10));
     _entryLabelsPaint!.layout();
-    _entryLabelsPaint!.paint(c,
-        Offset(x - _entryLabelsPaint!.width / 2, y - _entryLabelsPaint!.height));
+    _entryLabelsPaint!.paint(
+        c,
+        Offset(
+            x - _entryLabelsPaint!.width / 2, y - _entryLabelsPaint!.height));
   }
 
   @override
@@ -831,7 +835,9 @@ class PieChartRenderer extends DataRenderer {
 
       c.save();
 
-      _centerTextPaint = PainterUtils.create(_centerTextPaint, centerText,
+      _centerTextPaint = PainterUtils.create(
+          _centerTextPaint,
+          centerText,
           _painter!.centerTextColor ?? ColorUtils.BLACK,
           _painter!.centerTextSize ?? Utils.convertDpToPixel(12),
           fontFamily: _painter!.centerTextTypeface?.fontFamily,
@@ -884,8 +890,9 @@ class PieChartRenderer extends DataRenderer {
 
       if (index >= drawAngles.length) continue;
 
-      IPieDataSet? set =
-          _painter!.getData()!.getDataSetByIndex(indices[i].dataSetIndex) as IPieDataSet?;
+      IPieDataSet? set = _painter!
+          .getData()!
+          .getDataSetByIndex(indices[i].dataSetIndex) as IPieDataSet?;
 
       if (set == null || !set.isHighlightEnabled()) continue;
 
@@ -1131,8 +1138,7 @@ class PieChartRenderer extends DataRenderer {
   /// @param color
   void setTransparentCircleColor(Color color) {
     Paint p = transparentCirclePaint!;
-    p.color = Color.fromARGB(p.color.alpha,
-        color.red, color.green, color.blue);
+    p.color = Color.fromARGB(p.color.alpha, color.red, color.green, color.blue);
   }
 
   /// Sets the amount of transparency the transparent circle should have 0 = fully transparent,

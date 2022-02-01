@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mp_chart/mp/core/animator.dart';
 import 'package:mp_chart/mp/core/axis/x_axis.dart';
@@ -285,7 +284,8 @@ abstract class BarLineChartBasePainter<
 
     renderer!.drawData(canvas);
 
-    if (!xAxis!.drawGridLinesBehindData) _xAxisRenderer!.renderGridLines(canvas);
+    if (!xAxis!.drawGridLinesBehindData)
+      _xAxisRenderer!.renderGridLines(canvas);
 
     if (!_axisLeft!.drawGridLinesBehindData)
       _axisRendererLeft!.renderGridLines(canvas);
@@ -490,12 +490,13 @@ abstract class BarLineChartBasePainter<
     }
 
     if (_axisRight!.enabled) {
-      _axisRendererRight!.computeAxis(
-          _axisRight!.axisMinimum, _axisRight!.axisMaximum, _axisRight!.inverted);
+      _axisRendererRight!.computeAxis(_axisRight!.axisMinimum,
+          _axisRight!.axisMaximum, _axisRight!.inverted);
     }
 
     if (xAxis!.enabled) {
-      _xAxisRenderer!.computeAxis(xAxis!.axisMinimum, xAxis!.axisMaximum, false);
+      _xAxisRenderer!
+          .computeAxis(xAxis!.axisMinimum, xAxis!.axisMaximum, false);
     }
   }
 
@@ -522,8 +523,8 @@ abstract class BarLineChartBasePainter<
       }
 
       if (_axisRight!.needsOffset()) {
-        offsetRight +=
-            _axisRight!.getRequiredWidthSpace(_axisRendererRight!.axisLabelPaint);
+        offsetRight += _axisRight!
+            .getRequiredWidthSpace(_axisRendererRight!.axisLabelPaint);
       }
 
       if (xAxis!.enabled && xAxis!.drawLabels) {
@@ -882,7 +883,8 @@ abstract class BarLineChartBasePainter<
 
   @override
   BarLineScatterCandleBubbleData? getData() {
-    return super.getData() as BarLineScatterCandleBubbleData<IBarLineScatterCandleBubbleDataSet<Entry>>?;
+    return super.getData() as BarLineScatterCandleBubbleData<
+        IBarLineScatterCandleBubbleDataSet<Entry>>?;
   }
 
   /// Returns true if either the left or the right or both axes are inverted.
@@ -894,25 +896,25 @@ abstract class BarLineChartBasePainter<
     return false;
   }
 
-  bool updateEntry(int index, Entry entry, int dataSetIndex){
+  bool updateEntry(int index, Entry entry, int dataSetIndex) {
     var dataSet = getData()!.getDataSetByIndex(dataSetIndex);
-    if(dataSet == null) {
+    if (dataSet == null) {
       return false;
     }
 
     return dataSet.updateEntryByIndex(index, entry);
   }
 
-  void addEntryByIndex(int index, Entry entry, int dataSetIndex){
+  void addEntryByIndex(int index, Entry entry, int dataSetIndex) {
     var dataSet = getData()!.getDataSetByIndex(dataSetIndex);
-    if(dataSet != null){
+    if (dataSet != null) {
       dataSet.addEntryByIndex(index, entry);
     }
   }
 
-  void addEntry(Entry entry, int dataSetIndex){
+  void addEntry(Entry entry, int dataSetIndex) {
     var dataSet = getData()!.getDataSetByIndex(dataSetIndex);
-    if(dataSet != null) {
+    if (dataSet != null) {
       addEntryByIndex(dataSet.getEntryCount(), entry, dataSetIndex);
     }
   }

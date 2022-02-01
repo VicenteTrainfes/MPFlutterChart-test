@@ -1,4 +1,3 @@
-import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mp_chart/mp/controller/bar_chart_controller.dart';
 import 'package:mp_chart/mp/core/axis/y_axis.dart';
@@ -141,7 +140,8 @@ class HorizontalBarChartController extends BarChartController {
             touchEventListener: touchEventListener,
             chartTransListener: chartTransListener);
 
-  HorizontalBarChartPainter? get painter => super.painter as HorizontalBarChartPainter?;
+  HorizontalBarChartPainter? get painter =>
+      super.painter as HorizontalBarChartPainter?;
 
   @override
   void initialPainter() {

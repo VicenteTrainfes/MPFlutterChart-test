@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:mp_chart/mp/core/adapter_android_mp.dart';
@@ -32,8 +31,8 @@ class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
   Paint? _shadowPaint;
   Paint? _barBorderPaint;
 
-  BarChartRenderer(
-      BarDataProvider chart, Animator? animator, ViewPortHandler? viewPortHandler)
+  BarChartRenderer(BarDataProvider chart, Animator? animator,
+      ViewPortHandler? viewPortHandler)
       : super(animator, viewPortHandler) {
     this._provider = chart;
 
@@ -346,9 +345,9 @@ class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             BarEntry entry = dataSet.getEntryForIndex(index)!;
 
             List<double>? vals = entry.yVals;
-            double x =
-                (buffer!.buffer![bufferIndex]! + buffer.buffer![bufferIndex + 2]!) /
-                    2.0;
+            double x = (buffer!.buffer![bufferIndex]! +
+                    buffer.buffer![bufferIndex + 2]!) /
+                2.0;
 
             Color color = dataSet.getValueTextColor2(index);
 
@@ -383,14 +382,15 @@ class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 py += iconsOffset.y;
 
                 if (entry.mIcon != null && dataSet.isDrawIconsEnabled()) {
-                  CanvasUtils.drawImage(
-                      c, Offset(px, py), entry.mIcon!, Size(15, 15), drawPaint!);
+                  CanvasUtils.drawImage(c, Offset(px, py), entry.mIcon!,
+                      Size(15, 15), drawPaint!);
                 }
               }
 
               // draw stack values
             } else {
-              List<double?> transformed = List.filled(vals.length * 2, null, growable: false);
+              List<double?> transformed =
+                  List.filled(vals.length * 2, null, growable: false);
 
               double posY = 0.0;
               double negY = -entry.negativeSum!;
@@ -466,8 +466,8 @@ class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
     valuePaint = PainterUtils.create(valuePaint, valueText, color, textSize,
         fontFamily: typeFace?.fontFamily, fontWeight: typeFace?.fontWeight);
     valuePaint!.layout();
-    valuePaint!.paint(
-        c, Offset(x - valuePaint!.width / 2, y - valuePaint!.height));
+    valuePaint!
+        .paint(c, Offset(x - valuePaint!.width / 2, y - valuePaint!.height));
   }
 
   @override

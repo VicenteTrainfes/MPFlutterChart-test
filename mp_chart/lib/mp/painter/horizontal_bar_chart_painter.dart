@@ -1,7 +1,5 @@
 import 'dart:math';
-import 'dart:ui';
 
-import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mp_chart/mp/core/animator.dart';
 import 'package:mp_chart/mp/core/axis/x_axis.dart';
@@ -214,7 +212,9 @@ class HorizontalBarChartPainter extends BarChartPainter {
 
   @override
   List<double?> getMarkerPosition(Highlight high) {
-    return new List.empty(growable: true)..add(high.drawY)..add(high.drawX);
+    return new List.empty(growable: true)
+      ..add(high.drawY)
+      ..add(high.drawX);
   }
 
   @override

@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
@@ -269,7 +268,9 @@ class PieChartPainter extends PieRadarChartPainter<PieData?> {
         center.y);
 
     MPPointF.recycleInstance(center);
-    return List.empty(growable: true)..add(x)..add(y);
+    return List.empty(growable: true)
+      ..add(x)
+      ..add(y);
   }
 
   /// calculates the needed angles for the chart slices

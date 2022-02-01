@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/painting.dart';
 import 'package:mp_chart/mp/core/axis/y_axis.dart';
 import 'package:mp_chart/mp/core/enums/axis_dependency.dart';
@@ -20,7 +18,8 @@ class YAxisRenderer extends AxisRenderer {
 
   Paint? _zeroLinePaint;
 
-  YAxisRenderer(ViewPortHandler? viewPortHandler, YAxis? yAxis, Transformer? trans)
+  YAxisRenderer(
+      ViewPortHandler? viewPortHandler, YAxis? yAxis, Transformer? trans)
       : super(viewPortHandler, trans, yAxis) {
     this._yAxis = yAxis;
 
@@ -123,8 +122,9 @@ class YAxisRenderer extends AxisRenderer {
     YAxisLabelPosition position,
   ) {
     final int from = _yAxis!.drawBottomYLabelEntry ? 0 : 1;
-    final int to =
-        _yAxis!.drawTopYLabelEntry ? _yAxis!.entryCount : (_yAxis!.entryCount - 1);
+    final int to = _yAxis!.drawTopYLabelEntry
+        ? _yAxis!.entryCount
+        : (_yAxis!.entryCount - 1);
 
     // draw
     for (int i = from; i < to; i++) {
@@ -227,7 +227,8 @@ class YAxisRenderer extends AxisRenderer {
     return p;
   }
 
-  List<double?> mGetTransformedPositionsBuffer = List.filled(2, null, growable: false);
+  List<double?> mGetTransformedPositionsBuffer =
+      List.filled(2, null, growable: false);
 
   /// Transforms the values contained in the axis entries to screen pixels and returns them in form of a double array
   /// of x- and y-coordinates.
@@ -235,7 +236,8 @@ class YAxisRenderer extends AxisRenderer {
   /// @return
   List<double?> getTransformedPositions() {
     if (mGetTransformedPositionsBuffer.length != _yAxis!.entryCount * 2) {
-      mGetTransformedPositionsBuffer = List.filled(_yAxis!.entryCount * 2, null, growable: false);
+      mGetTransformedPositionsBuffer =
+          List.filled(_yAxis!.entryCount * 2, null, growable: false);
     }
     List<double?> positions = mGetTransformedPositionsBuffer;
 

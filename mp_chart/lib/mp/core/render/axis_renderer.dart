@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:mp_chart/mp/core/axis/axis_base.dart';
@@ -155,8 +154,8 @@ abstract class AxisRenderer extends Renderer {
 
     // Normalize interval
     try {
-      double intervalMagnitude =
-          Utils.roundToNextSignificant(pow(10.0, log(interval) ~/ ln10) as double);
+      double intervalMagnitude = Utils.roundToNextSignificant(
+          pow(10.0, log(interval) ~/ ln10) as double);
       int intervalSigDigit = interval ~/ intervalMagnitude;
       if (intervalSigDigit > 5) {
         // Use one order of magnitude higher, to avoid intervals like 0.9 or
