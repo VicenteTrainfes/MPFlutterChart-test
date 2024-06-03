@@ -17,6 +17,7 @@ dependencies:
   optimized_gesture_detector: 
     git:
       url: https://github.com/Juniorlpes/OptimizedGestureDetector.git
+      ref: 4501100ed0f2c8c93f66837100fe230e71f488f1
       #path: mp_chart
     #path : ../OptimizedGestureDetector/
   vector_math: ^2.1.0
